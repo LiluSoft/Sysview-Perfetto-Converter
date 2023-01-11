@@ -1,7 +1,7 @@
 import re
 import struct
 import copy
-import apptrace
+import espytrace.apptrace as apptrace
 import os
 
 SYSVIEW_EVTID_NOP                 = 0  # Dummy packet.
