@@ -1,5 +1,6 @@
 __pycache__
 .gitignore
-cpu_ftrace
-cpu_ftrace.json
-svdat_dump.json
+cpu_ftrace*
+cpu_ftrace*.json
+svdat_dump*.json
+

@@ -5,7 +5,18 @@ Another alternative would be to use [toem Impulse](https://docs.espressif.com/pr
 
 After looking at a few tools I've found [Perfetto](https://perfetto.dev/) for working with Linux trace files, which made it a candidate for showing SystemView data as well and it can handle multiple cores, complex events and interrupts and metrics.
 
+![example sample 3](example3.png "Example 3")
 
+# SYSVIEW_FreeRTOS.txt
+The `SYSVIEW_FreeRTOS.txt` specifies the trace function and arguments for the sysview decoder. On the other end there is the `SEGGER_SYSVIEW_FreeRTOS.h` and possibly `SEGGER_SYSVIEW_RegisterModule` for additional modules.
+
+# Usage
+```bash
+python tracer.py -i samples/app-cpu.svdat -i samples/pro-cpu.svdat --dump_input svdat_dump.json -p cpu_ftrace --dump_ftrace_json cpu_ftrace.json
+python tracer.py -i samples/app-cpu1.svdat -i samples/pro-cpu1.svdat --dump_input svdat_dump1.json -p cpu_ftrace1 --dump_ftrace_json cpu_ftrace1.json
+python tracer.py -i samples/app-cpu2.svdat -i samples/pro-cpu2.svdat --dump_input svdat_dump2.json -p cpu_ftrace2 --dump_ftrace_json cpu_ftrace2.json
+python tracer.py -i samples/app-cpu3.svdat -i samples/pro-cpu3.svdat --dump_input svdat_dump3.json -p cpu_ftrace3 --dump_ftrace_json cpu_ftrace3.json
+```
 
 # Missing Features
 - Tracing Custom Metric is not currently supported. Both Sysview and Perfetto supports metrics.
@@ -13,4 +24,21 @@ After looking at a few tools I've found [Perfetto](https://perfetto.dev/) for wo
 # Alternatives
 - Use Two instances of Segger SystemView, one for each core
 - Use [toem Impulse](https://mcuoneclipse.com/2016/07/31/impulse-segger-systemview-in-eclipse/) to view multiple traces side by side
-- Use [Percepio Tracealyzer](https://www.freertos.org/FreeRTOS-Plus/FreeRTOS_Plus_Trace/FreeRTOS_Plus_Trace.html) 
+- Use [Percepio Tracealyzer](https://www.freertos.org/FreeRTOS-Plus/FreeRTOS_Plus_Trace/FreeRTOS_Plus_Trace.html)
+
+
+# License
+This library is free for use for open source and hobbyist.
+
+# Disclaimer
+```
+THIS SOFTWARE OR SUPPORT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE OR SUPPORT,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
