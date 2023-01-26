@@ -11,6 +11,12 @@ After looking at a few tools I've found [Perfetto](https://perfetto.dev/) for wo
 The `SYSVIEW_FreeRTOS.txt` specifies the trace function and arguments for the sysview decoder. On the other end there is the `SEGGER_SYSVIEW_FreeRTOS.h` and possibly `SEGGER_SYSVIEW_RegisterModule` for additional modules.
 
 # Usage
+
+## Installing
+```bash
+pip install -r requirements.txt
+```
+
 ```bash
 python tracer.py -i samples/app-cpu.svdat -i samples/pro-cpu.svdat --dump_input svdat_dump.json -p cpu_ftrace --dump_ftrace_json cpu_ftrace.json
 python tracer.py -i samples/app-cpu1.svdat -i samples/pro-cpu1.svdat --dump_input svdat_dump1.json -p cpu_ftrace1 --dump_ftrace_json cpu_ftrace1.json
