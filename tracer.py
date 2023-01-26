@@ -28,6 +28,9 @@ print(parser.prog, "-", parser.description)
 sysview_reader = SysViewReader()
 processed_events = []
 
+if args["input_filename"] is None:
+    parser.parse_args(["-h"])
+
 for filename in args["input_filename"]:
     sysview_reader.add_file(filename, args["sysview_mapfile"])
 
